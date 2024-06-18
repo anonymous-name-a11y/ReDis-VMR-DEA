@@ -1,0 +1,13 @@
+/grounding/ckp/
+/grounding/runs/
+/data/Charades/i3d_feature/
+/data/ANet/i3d_feature/
+/data/ANet/words/ixtoword.npy
+/data/Charades/words/ixtoword.npy
+/.idea/misc.xml
+/.idea/ShufflingVideosForTSG-main.iml
+/.idea/vcs.xml
+/data/ANet/words/word_glove_fts_init.npy
+/data/Charades/words/word_glove_fts_init.npy
+/data/ANet/words/wordtoix.npy
+/data/Charades/words/wordtoix.npy
