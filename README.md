@@ -1,12 +1,27 @@
-# Can Shuffling Video Benefit Temporal Bias Problem for Temporal Grounding
+# Facing Biases: Reverse Distribution based Video Moment Retrieval with Dynamic Expandable Adjustment
 
-Code for ECCV 2022 paper "Can Shuffling Video Benefit Temporal Bias Problem: A Novel Training Framework for Temporal Grounding" [[arxiv]](https://arxiv.org/abs/2207.14698).
+Code for paper "Facing Biases: Reverse Distribution based Video Moment Retrieval with Dynamic Expandable Adjustment" 
+
+
+## run DEA on charades-cd
+
+```
+python train.py --gpu_id=0 --cfg charades_cd_i3d.yml --alias DEA
+```
+
+## run DEA on activitynet-cd
+
+```
+python train.py --gpu_id=0 --cfg anet_cd_i3d.yml --alias DEA
+```
+
+
+
+The environment setup and data preparation are consistent with the [baseline](https://github.com/haojc/ShufflingVideosForTSG/blob/main/README.md).
 
 
 ## Installation
-We provide the environment file for anaconda.
 
-You can build the conda environment simply by,
 ```bash
 conda env create -f environment.yml
 ```
@@ -31,89 +46,3 @@ you need to download the word embeddings from the ([box drive](https://app.box.c
 and put the word embeddings into the directory `data/ANet/words`.
 
 
-## Quick Start
-```
-conda activate HLTI
-cd grounding
-```
-
-
-### Charades-CD
-
-Train:
-```
-python train.py --gpu_id=0 --cfg charades_cd_i3d.yml --alias one_name
-```
-The checkpoints and prediction results will be saved in `grounding/runs/DATASET/`
-
-Evaluate:
-```
-python test.py --gpu_id=0 --cfg charades_cd_i3d.yml --alias test
-```
-
-You can change the model to be evaluated in the corresponding config file. By default, test.py will use the pre-trained model provided by us.
-
-### ActivityNet-CD
-
-Train:
-```
-python train.py --gpu_id=0 --cfg anet_cd_i3d.yml --alias one_name
-```
-Evaluate:
-```
-python test.py --gpu_id=0 --cfg anet_cd_i3d.yml --alias test
-```
-
-### About Pretrained Models
-
-We provide the corresponding prediction results, parameter setting, and evaluation result files
-in `grounding/ckp` for both datasets.
-
-## Baseline
-
-We also provide the implementation of the baseline ([QAVE](https://dl.acm.org/doi/abs/10.1016/j.neucom.2022.01.085)).
-
-### Charades-CD
-
-Train:
-```
-python train_baseline.py --gpu_id=0 --cfg charades_cd_i3d.yml --alias one_name
-```
-Evaluate:
-```
-python test_baseline.py --gpu_id=0 --cfg charades_cd_i3d.yml --alias test
-```
-
-Please determine the model to be evaluated in the corresponding config file.
-
-### ActivityNet-CD
-
-Train:
-```
-python train_baseline.py --gpu_id=0 --cfg anet_cd_i3d.yml --alias one_name
-```
-Evaluate:
-```
-python test_baseline.py --gpu_id=0 --cfg anet_cd_i3d.yml --alias test
-```
-
-## Citation
-Please cite our papers if you find them useful for your research.
-```
-@inproceedings{hao2022shufflevideos,
-  author    = {Hao, Jiachang and Sun, Haifeng and Ren, Pengfei and Wang, Jingyu and Qi, Qi and Liao, Jianxin},
-  title     = {Can Shuffling Video Benefit Temporal Bias Problem: A Novel Training Framework for Temporal Grounding},
-  booktitle = {European Conference on Computer Vision},
-  year      = {2022},
-}
-```
-The baseline QAVE is: 
-```
-@article{hao2022qave,
-  title={Query-Aware Video Encoder for Video Moment Retrieval},
-  author={Hao, Jiachang and Sun, Haifeng and Ren, Pengfei and Wang, Jingyu and Qi, Qi and Liao, Jianxin},
-  journal={Neurocomputing},
-  year={2022},
-  publisher={Elsevier}
-}
-```
